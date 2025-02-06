@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.jeremiz</groupId>
 	<artifactId>monitor</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.5</version>
 	<name>monitor</name>
 	<description>monitor</description>
 	<url/>
