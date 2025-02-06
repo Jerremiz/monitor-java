@@ -155,4 +155,19 @@ public class HistoryDataService {
         cache.put(cacheKey, new CacheItem(response));
         return response;
     }
+
+    // 定时任务，每天凌晨3点执行数据清理和数据库压缩
+    @Scheduled(cron = "0 0 3 * * *")
+    public void removeOldData() {
+        String deleteSql = "DELETE FROM metrics WHERE timestamp < datetime('now', '-3 months')";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement()) {
+            int deletedRows = stmt.executeUpdate(deleteSql);
+            stmt.execute("VACUUM"); // 执行 VACUUM 整理压缩数据库
+            logger.info("Old data cleanup and vacuum completed, deleted {} rows.", deletedRows);
+        } catch (SQLException e) {
+            logger.error("Error during old data cleanup or vacuum", e);
+        }
+    }
 }
