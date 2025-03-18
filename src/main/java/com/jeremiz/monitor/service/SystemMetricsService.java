@@ -1,4 +1,4 @@
-package com.jeremiz.monitor;
+package com.jeremiz.monitor.service;
 
 import oshi.SystemInfo;
 import oshi.hardware.HWDiskStore;

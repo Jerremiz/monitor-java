@@ -1,5 +1,7 @@
-package com.jeremiz.monitor;
+package com.jeremiz.monitor.controller;
 
+import com.jeremiz.monitor.service.HistoryDataService;
+import com.jeremiz.monitor.service.SystemMetricsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;

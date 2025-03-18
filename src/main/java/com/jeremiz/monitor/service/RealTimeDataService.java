@@ -1,6 +1,7 @@
-package com.jeremiz.monitor;
+package com.jeremiz.monitor.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jeremiz.monitor.utils.WebSocketSessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
@@ -26,7 +27,7 @@ public class RealTimeDataService extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(@NonNull WebSocketSession session) {
         try {
-            SessionManager.addSession(session);
+            WebSocketSessionManager.addSession(session);
             logger.info("WebSocket session added: {}", session.getId());
         } catch (Exception e) {
             logger.error("Error adding WebSocket session", e);
@@ -36,7 +37,7 @@ public class RealTimeDataService extends TextWebSocketHandler {
     @Override
     public void afterConnectionClosed(@NonNull WebSocketSession session, @NonNull CloseStatus status) {
         try {
-            SessionManager.removeSession(session);
+            WebSocketSessionManager.removeSession(session);
             logger.info("WebSocket session removed: {}", session.getId());
         } catch (Exception e) {
             logger.error("Error removing WebSocket session", e);
@@ -45,7 +46,7 @@ public class RealTimeDataService extends TextWebSocketHandler {
 
     @Scheduled(fixedRate = 1000)
     private void sendRealTimeSysMetrics() {
-        Set<WebSocketSession> sessions = SessionManager.getSessions();
+        Set<WebSocketSession> sessions = WebSocketSessionManager.getSessions();
         if (!sessions.isEmpty()) {
             getRealTimeSysMetrics();
             sendSysMetrics(sessions);

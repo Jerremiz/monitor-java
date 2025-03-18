@@ -1,5 +1,6 @@
-package com.jeremiz.monitor;
+package com.jeremiz.monitor.service;
 
+import com.jeremiz.monitor.utils.WebSocketSessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -73,7 +74,7 @@ public class HistoryDataService {
 
     @Scheduled(cron = "0 * * * * *")
     public void setData() {
-        if (SessionManager.getSessions().isEmpty()) {
+        if (WebSocketSessionManager.getSessions().isEmpty()) {
             metrics = SystemMetricsService.getSysMetrics();
         } else {
             metrics = RealTimeDataService.dataPoint();
