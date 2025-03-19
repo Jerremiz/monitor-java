@@ -1,8 +1,7 @@
-<div style="text-align: center;">
+<!--suppress HtmlDeprecatedAttribute -->
+<div align="center">
 <h1>🚀 Performance Metrics</h1>
 </div>
-
----
 
 ## 📋 项目简介
 
