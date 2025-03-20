@@ -124,7 +124,6 @@ java -jar monitor-1.0.6.jar --server.port=9090
    ```bash
    git clone https://github.com/Jerremiz/monitor-java.git
    cd monitor-java
-   chmod +x mvnw # Linux下添加执行权限
    ```
 
 2. **启动开发服务器**
