@@ -124,19 +124,15 @@ java -jar monitor-1.0.6.jar --server.port=9090
    ```bash
    git clone https://github.com/Jerremiz/monitor-java.git
    cd monitor-java
+   chmod +x mvnw # Linux下添加执行权限
    ```
 
-2. **添加执行权限**
-   ```bash
-   chmod +x mvnw
-   ```
-
-3. **启动开发服务器**
+2. **启动开发服务器**
    ```bash
    ./mvnw spring-boot:run
    ```
 
-4. **构建项目**
+3. **打包**
    ```bash
    ./mvnw clean package
    ```
