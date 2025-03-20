@@ -38,7 +38,7 @@
 3. **设置为系统服务** (Linux, 使用systemd)
    ```bash
    # 创建服务文件
-   sudo nano /etc/systemd/system/monitor.service
+   sudo vim /etc/systemd/system/monitor.service
    
    # 文件内容
    [Unit]
@@ -46,8 +46,8 @@
    After=network.target
    
    [Service]
-   User=yourusername
-   ExecStart=/usr/bin/java -jar /path/to/monitor-1.0.6.jar
+   User=yourusername  # 替换用户名
+   ExecStart=/usr/bin/java -jar /path/to/monitor-1.0.6.jar # 替换路径
    Restart=on-failure
    
    [Install]
@@ -119,6 +119,8 @@ java -jar monitor-1.0.6.jar --server.port=9090
 实时数据通过 WebSocket 传输，连接端点为 `/ws/data`
 
 ## 👨‍💻 开发
+
+推荐环境：[JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
 1. **克隆仓库**
    ```bash
