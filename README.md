@@ -126,9 +126,9 @@ java -jar monitor-1.0.6.jar --server.port=9090
    cd monitor-java
    ```
 
-2. **运行测试**
+2. **添加执行权限**
    ```bash
-   ./mvnw test
+   chmod +x mvnw
    ```
 
 3. **启动开发服务器**
